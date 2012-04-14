@@ -4,5 +4,5 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'WSJ Hack' })
+  res.render('index', { title: 'Transparen.cc' })
 };

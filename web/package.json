@@ -1,12 +1,12 @@
 {
-  "name": "wsj-clear-social",
+  "name": "transparen.cc",
   "version": "0.0.1-2",
   "private": true,
   "dependencies": {
     "express": "2.5.8",
     "jade": ">= 0.0.1"
   },
-  "subdomain": "wsj",
+  "subdomain": "tcc",
   "scripts": {
     "start": "server.js"
   },
