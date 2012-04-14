@@ -12,14 +12,20 @@ function middleware(res, callback) {
     }
 }
 
-httpProxy.createServer({
+var body='';
+
+var proxy = httpProxy.createServer({
     target: { host: 'graph.facebook.com', port: 443, https: true },
     changeOrigin: true },
     function (req, res, proxy) {
         console.log("Received request.");
         var buffer = httpProxy.buffer(req);
-        res.on('data', function(data) {
+        proxy.on('data', function(data) {
             console.log(data);
+            body+=data;
+        });
+        proxy.on('end', function() {
+            console.log(body);
         });
        // middleware(res, function() {
        //     console.log("The request was proxied");
@@ -27,3 +33,6 @@ httpProxy.createServer({
         proxy.proxyRequest(req, res, buffer);
 }).listen(8000);
 
+proxy.on('data', function(data) {
+  console.log(data);
+});
