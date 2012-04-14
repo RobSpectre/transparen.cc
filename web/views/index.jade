@@ -16,8 +16,14 @@ html
     script(type="text/javascript", src="javascripts/index.js")
 
   body
-    h1= title
-    p Welcome to #{title} Hello world!
-    #displayarea
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.brand #{title}
 
+    .container
+      .hero-unit
+        h1= title
+        p 
+          #displayarea
 
