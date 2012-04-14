@@ -1,2 +1,15 @@
-h1= title
-p Welcome to #{title} Hello world!
+!!! 5
+html
+  head
+    title Transparen.cc
+    meta(charset="utf-8")
+
+    script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")  
+    script(type="text/javascript", src="http://cdnjs.cloudflare.com/ajax/libs/socket.io/0.8.4/socket.io.min.js")
+    script(type="text/javascript", src="javascripts/index.js")
+
+
+  body
+    h1= title
+    p Welcome to #{title} Hello world!
+    #displayarea
