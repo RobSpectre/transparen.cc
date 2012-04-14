@@ -10,12 +10,14 @@ publisher.auth configs.redis.password, () ->
 
 routes = (app) ->
   app.get /^\/proxy\/(.+)/, (req, res) ->
+    app_name = 'Super Fun App'
     req_endpoint = req.params[0]
+    queries = req.query
     
     if configs.access_token
-      req.query['access_token'] = configs.access_token
+      queries['access_token'] = configs.access_token
 
-    querystring = for key, val of req.query
+    querystring = for key, val of queries
           "#{key}=#{val}"
     
     console.log JSON.stringify(querystring)
@@ -25,7 +27,15 @@ routes = (app) ->
     console.log "URL is " + url
 
     rest.get(url).on 'complete', (data) ->
-      publisher.publish('tcc', data)
+      delete queries['access_token']
+      topublish =
+          appname: app_name
+          endpoint: req_endpoint
+          querystring: queries
+          timestamp: new Date()
+          data : data
+
+      publisher.publish('tcc', JSON.stringify(topublish))
       console.log "publisher is work? "
       res.send data
 

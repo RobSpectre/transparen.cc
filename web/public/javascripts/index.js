@@ -2,6 +2,8 @@ var r = Raphael(10, 50, 640, 480);
 
 var pieval = [1,1];
 
+var jsonmsg;
+
 $('document').ready(function() {  
 
       var socket = io.connect('http://localhost:3000');
@@ -13,8 +15,14 @@ $('document').ready(function() {
       });
 
       socket.on('message', function(msg){
+        jsonmsg = msg.data;
+        appdata = JSON.parse(jsonmsg);
+
+         
+
         console.log("Received message for node: " + msg.data);
-        $('#displayarea').append("Received message: " + msg.data.substring(0, 100) + "<br>");
+        $('#displayarea').append("API call detected from <b>" + appdata.appname + "</b> at <b>" + appdata.endpoint + "</b>. Returned <b>" + appdata.data.length + " bytes</b> of data<br>");
+       
         
         pieval[msg.data.length % 2]++;
         setupPie(pieval);
