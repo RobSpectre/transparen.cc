@@ -12,3 +12,10 @@ used.
 ## License
 
 * MIT License
+
+
+## Resources
+
+* [Hacker
+ League]
+ (http://hackerleague.org/hackathons/wsj-data-transparency-code-a-thon/hacks/transparen-dot-cc)
