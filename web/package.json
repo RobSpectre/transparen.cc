@@ -1,14 +1,18 @@
 {
   "name": "transparen.cc",
+  "description": "A social app proxy to give users transparency into how their social data is used.",
+  "author": "Rob Spectre, Mason Du, Chris Carson",
   "version": "0.0.1-3",
   "private": true,
   "dependencies": {
     "express": "2.5.8",
     "jade": ">= 0.0.1",
-    "connect-redis": "~1.3.0",
     "redis": "~0.7.1",
     "hiredis": "~0.1.14",
-    "socket.io": "~0.9.5"
+    "socket.io": "~0.9.5",
+    "coffee-script": ">= 1.3.1",
+    "connect-redis": "~1.3.0",
+    "http-proxy": "git+https://github.com/CodeRarity/node-http-proxy.git#fix-changeorigin"
   },
   "subdomain": "tcc",
   "scripts": {
