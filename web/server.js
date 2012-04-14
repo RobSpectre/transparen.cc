@@ -52,7 +52,8 @@ var redis = require('redis');
 
 //    client = redis.createClient(configs.redis.port, configs.redis.host);
 io.sockets.on('connection', function(socket){
-  var subscribe = redis.createClient();
+  var subscribe = redis.createClient(configs.redis.port, configs.redis.host);
+  subscribe.auth(configs.redis.password, function() {console.log("Connected!");})
 
   socket.on('message', function(msg){
     console.log('Received message: ' + JSON.stringify(msg));
