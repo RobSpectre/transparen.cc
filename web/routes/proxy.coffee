@@ -1,5 +1,12 @@
 rest = require 'restler'
 configs = require '../configs'
+redis = require 'redis'
+
+publisher = redis.createClient(configs.redis.port, configs.redis.host)
+publisher.auth configs.redis.password, () ->
+  console.log "Publisher connected!"
+
+
 
 routes = (app) ->
   app.get /^\/proxy\/(.+)/, (req, res) ->
@@ -18,7 +25,8 @@ routes = (app) ->
     console.log "URL is " + url
 
     rest.get(url).on 'complete', (data) ->
-      console.log "something here: " + data
+      publisher.publish('tcc', data)
+      console.log "publisher is work? "
       res.send data
 
 module.exports = routes

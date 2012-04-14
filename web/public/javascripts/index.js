@@ -14,7 +14,7 @@ $('document').ready(function() {
 
       socket.on('message', function(msg){
         console.log("Received message for node: " + msg.data);
-        $('#displayarea').append("Received message: " + msg.data + "<br>");
+        $('#displayarea').append("Received message: " + msg.data.substring(0, 100) + "<br>");
         
         pieval[msg.data.length % 2]++;
         setupPie(pieval);
