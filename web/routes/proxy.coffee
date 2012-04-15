@@ -37,7 +37,6 @@ routes = (app) ->
 
       publisher.publish('tcc', JSON.stringify(topublish))
       publisher.lpush('tcc:backlog', JSON.stringify(topublish))
-      console.log "publisher is work? "
       res.send data
 
 module.exports = routes
