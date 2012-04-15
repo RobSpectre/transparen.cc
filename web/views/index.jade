@@ -35,7 +35,7 @@ html
               td Size
              each item in log
               tr
-                td.timeago= item.timestamp
+                td.timeago(title= item.timestamp) time
                 td= item.appname
                 td= item.endpoint.replace('me/', '')
                 td= item.data.length
