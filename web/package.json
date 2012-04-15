@@ -16,6 +16,10 @@
     "restler": "~2.0.0",
     "moment": "~1.5.1"
   },
+  "domains": [
+    "transparen.cc",
+    "www.transparen.cc"
+  ],
   "subdomain": "tcc",
   "scripts": {
     "start": "server.js"
