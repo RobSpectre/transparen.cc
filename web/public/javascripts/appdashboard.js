@@ -21,7 +21,7 @@ $('document').ready(function() {
   var legenddata = [];
   for(var x in counts) {
     graphdata.push(counts[x]);
-    legenddata.push(x);
+    legenddata.push(x + ' - ' + counts[x]);
   }
   setupPie(graphdata, legenddata);
   
