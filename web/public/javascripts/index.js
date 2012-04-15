@@ -26,7 +26,7 @@ $('document').ready(function() {
          
 
         console.log("Received message for node: " + msg.data);
-        $('#auditlog tr:last').after('<tr><td class="timeago">' + appdata.timestamp + '</td><td>' + appdata.appname + '</td><td>' + appdata.endpoint.replace('me/', '') + '</td><td>' + appdata.data.length + '</td></tr>');
+        $('#auditlog tr:first').after('<tr><td class="timeago" title="' + appdata.timestamp + '">' + appdata.timestamp + '</td><td>' + appdata.appname + '</td><td>' + appdata.endpoint.replace('me/', '') + '</td><td>' + appdata.data.length + '</td></tr>');
         
 
         $("td.timeago").timeago();
