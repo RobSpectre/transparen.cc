@@ -8,10 +8,6 @@ html
     script(type="text/javascript", src="socket.io/socket.io.js")
 
 
-    script(type="text/javascript", src="javascripts/raphael-min.js")
-    script(type="text/javascript", src="javascripts/g.raphael-min.js")
-    script(type="text/javascript", src="javascripts/g.pie-min.js")
-    script(type="text/javascript", src="javascripts/g.line-min.js")  
     script(type="text/javascript", src="javascripts/moment.min.js")
     script(type="text/javascript", src="javascripts/jquery.timeago.js")
 
@@ -36,7 +32,8 @@ html
              each item in log
               tr
                 td.timeago(title= item.timestamp) time
-                td= item.appname
+                td 
+                  a(href='app/SuperFunApp') #{item.appname}
                 td= item.endpoint.replace('me/', '')
                 td= item.data.length
 
