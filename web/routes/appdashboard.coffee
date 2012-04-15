@@ -6,9 +6,9 @@ publisher.auth configs.redis.password, () ->
   console.log "Publisher connected!"
 
 routes = (app) ->
-  app.get '/^\/app\/(.+)/', (req, res) ->
-    appname = params[0]
-    publisher.lrange 'tcc:backlog', 0, 200, (err, data) ->
+  app.get /^\/app\/(.+)/, (req, res) ->
+    appname = req.params[0]
+    publisher.sort 'tcc:backlog', 'BY', 'endpoint', (err, data) ->
         items = (JSON.parse(item) for item in data)
         res.render 'appdashboard',
             title: 'Transparen.cc - ' + appname

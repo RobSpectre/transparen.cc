@@ -44,6 +44,7 @@ app.configure('production', function(){
 
 require('./routes/index')(app)
 require('./routes/proxy')(app)
+require('./routes/appdashboard')(app)
 
 
 // pub/sub
