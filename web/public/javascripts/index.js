@@ -17,15 +17,18 @@ $('document').ready(function() {
       socket.on('message', function(msg){
         jsonmsg = msg.data;
         appdata = JSON.parse(jsonmsg);
-
+        m = new moment(appdata.timestamp);
          
 
         console.log("Received message for node: " + msg.data);
-        $('#displayarea').append("API call detected from <b>" + appdata.appname + "</b> at <b>" + appdata.endpoint + "</b>. Returned <b>" + appdata.data.length + " bytes</b> of data<br>");
+        $('#displayarea').append("API call detected from <b>" + appdata.appname + "</b> at <b>" + appdata.endpoint + "</b>. Returned <b>" + appdata.data.length + " bytes</b> of data ");
+      
+        $('#displayarea').append("<span class='timeago' title='" + appdata.timestamp + "'>"+m.fromNow()+"</span><br>");
        
-        
+        $("span.timeago").timeago();
+
         pieval[msg.data.length % 2]++;
-        setupPie(pieval);
+        //setupPie(pieval);
       });
     });
 
