@@ -8,7 +8,6 @@ publisher.auth configs.redis.password, () ->
 routes = (app) ->
   app.get '/', (req, res) ->
     publisher.lrange 'tcc:backlog', 0, 20, (err, data) ->
-        console.log(data)
         items = (JSON.parse(item) for item in data) 
         res.render 'index',
           title: 'Transparen.cc'

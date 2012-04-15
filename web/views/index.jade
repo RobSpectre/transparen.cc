@@ -37,7 +37,7 @@ html
               tr
                 td.timeago= item.timestamp
                 td= item.appname
-                td= item.endpoint
+                td= item.endpoint.replace('me/', '')
                 td= item.data.length
 
   script(type="text/javascript", src="javascripts/index.js")
