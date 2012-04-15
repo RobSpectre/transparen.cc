@@ -1,11 +1,31 @@
 
-var r = Raphael(10, 50, 640, 480);
+var r = Raphael('rholder');
 
 var pieval = [1,1];
 
 var jsonmsg;
 
 $('document').ready(function() {
+
+  var endpoints = data.split(',');
+  var counts = {};
+  for(var i=0; i<endpoints.length; i++) {
+    var shortstr = endpoints[i].replace('me/', '')
+    if(counts[shortstr])
+      counts[shortstr] += 1;
+    else
+      counts[shortstr] = 1;
+  }
+
+  var graphdata = [];
+  var legenddata = [];
+  for(var x in counts) {
+    graphdata.push(counts[x]);
+    legenddata.push(x);
+  }
+  setupPie(graphdata, legenddata);
+  
+
     var socket = io.connect('http://localhost:3000');
 
     socket.on('connect', function(){
@@ -13,15 +33,16 @@ $('document').ready(function() {
         console.log("Connected.");
     });
     
-    socket.on('message', function(
-
+    socket.on('message', function(){
     });
 
-function setupPie(piedata) {
+});
+
+function setupPie(piedata, legenddata) {
   r.clear();
   // Creates pie chart at with center at 320, 200,
   // radius 100 and data: [55, 20, 13, 32, 5, 1, 2]
-  var pie = r.piechart(320, 240, 100, piedata.slice());
+  var pie = r.piechart(350, 170, 170, piedata.slice(), { legend: legenddata, legendpos: "east" });
 
   pie.hover(function () {
     this.sector.stop();
@@ -40,5 +61,6 @@ function setupPie(piedata) {
     }
 
   });
+
 }
-});
+

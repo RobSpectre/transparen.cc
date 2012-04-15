@@ -2,7 +2,7 @@
   "name": "transparen.cc",
   "description": "A social app proxy to give users transparency into how their social data is used.",
   "author": "Rob Spectre, Mason Du, Chris Carson",
-  "version": "0.0.1-10",
+  "version": "0.0.1-14",
   "private": true,
   "dependencies": {
     "express": "2.5.8",
