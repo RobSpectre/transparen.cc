@@ -26,9 +26,18 @@ html
     .container
       .hero-unit
         h1= title
-        p 
-          #displayarea
-
-
+        if log
+          table.table.table-striped#auditlog
+            tr
+              td Time
+              td App
+              td Data
+              td Size
+             each item in log
+              tr
+                td.timeago= item.timestamp
+                td= item.appname
+                td= item.endpoint
+                td= item.data.length
 
   script(type="text/javascript", src="javascripts/index.js")

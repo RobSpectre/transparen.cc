@@ -8,6 +8,8 @@ $('document').ready(function() {
 
       var socket = io.connect('http://localhost:3000');
      
+      $("td.timeago").timeago();
+
       socket.on('connect', function(){
         socket.emit('message', {action: 'subscribe', channel: 'tcc'});
         console.log("Connected.");
@@ -21,11 +23,9 @@ $('document').ready(function() {
          
 
         console.log("Received message for node: " + msg.data);
-        $('#displayarea').append("API call detected from <b>" + appdata.appname + "</b> at <b>" + appdata.endpoint + "</b>. Returned <b>" + appdata.data.length + " bytes</b> of data ");
-      
-        $('#displayarea').append("<span class='timeago' title='" + appdata.timestamp + "'>"+m.fromNow()+"</span><br>");
-       
-        $("span.timeago").timeago();
+        $('#auditlog tr:last').after('<tr><td class="timeago">' + appdata.timestamp + '</td><td>' + appdata.appname + '</td><td>' + appdata.endpoint + '</td><td>' + appdata.data.length + '</td></tr>');
+        
+        $("td.timeago").timeago();
 
         pieval[msg.data.length % 2]++;
         //setupPie(pieval);
@@ -58,10 +58,3 @@ function setupPie(piedata) {
 
   });
 }
-
-
-
-
-
-
-       
