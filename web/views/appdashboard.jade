@@ -1,0 +1,31 @@
+!!! 5
+html
+  head
+    title Transparen.cc - #{appname}
+    meta(charset="utf-8")
+
+    script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")  
+    script(type="text/javascript", src="socket.io/socket.io.js")
+
+
+    script(type="text/javascript", src="javascripts/raphael-min.js")
+    script(type="text/javascript", src="javascripts/g.raphael-min.js")
+    script(type="text/javascript", src="javascripts/g.pie-min.js")
+    script(type="text/javascript", src="javascripts/g.line-min.js")  
+    script(type="text/javascript", src="javascripts/moment.min.js")
+    script(type="text/javascript", src="javascripts/jquery.timeago.js")
+
+  body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          a.brand #{title}
+
+    .container
+      .hero-unit
+        h1= appname 
+
+      #displayarea
+
+
+  script(type="text/javascript", src="javascripts/appdashboard.js")
