@@ -42,7 +42,7 @@ function setupPie(piedata, legenddata) {
   r.clear();
   // Creates pie chart at with center at 320, 200,
   // radius 100 and data: [55, 20, 13, 32, 5, 1, 2]
-  var pie = r.piechart(350, 170, 170, piedata.slice(), { legend: legenddata, legendpos: "east" });
+  var pie = r.piechart(350, 170, 150, piedata.slice(), { legend: legenddata, legendpos: "east" });
 
   pie.hover(function () {
     this.sector.stop();
